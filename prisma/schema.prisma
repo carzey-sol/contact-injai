@@ -1,0 +1,18 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model NewsletterSubscription {
+  id        String   @id @default(cuid())
+  email     String
+  name      String
+  status    String   @default("active")
+  source    String   @default("contact-form")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
