@@ -41,19 +41,19 @@ export default function ContactFormPage() {
         setErrorMessage(data.error || 'Failed to send message. Please try again.');
       }
     } catch (error) {
-      console.error(error); // ✅ now used, no more eslint warning
+      console.error(error);
       setStatus('error');
       setErrorMessage('Network error. Please check your connection and try again.');
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-900">
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-black">
       {/* Header */}
-      <header className="bg-black/50 backdrop-blur-sm border-b border-gray-800">
+      <header className="bg-black border-b border-gray-800 shadow-md">
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
-            <h1 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent">
+            <h1 className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-red-600 to-red-400 bg-clip-text text-transparent">
               Injai Channel
             </h1>
             <a 
@@ -80,7 +80,7 @@ export default function ContactFormPage() {
           </div>
 
           {/* Contact Form Card */}
-          <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl border border-gray-700 p-8 md:p-12 shadow-2xl">
+          <div className="bg-gray-900 rounded-2xl border border-gray-800 p-8 md:p-12 shadow-xl hover:shadow-2xl transition-all">
             <form onSubmit={handleSubmit} className="space-y-6">
               {/* Name Field */}
               <div>
@@ -94,7 +94,7 @@ export default function ContactFormPage() {
                   required
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all"
+                  className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/50 transition-all"
                   placeholder="John Doe"
                 />
               </div>
@@ -111,7 +111,7 @@ export default function ContactFormPage() {
                   required
                   value={formData.email}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all"
+                  className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/50 transition-all"
                   placeholder="john@example.com"
                 />
               </div>
@@ -128,7 +128,7 @@ export default function ContactFormPage() {
                   required
                   value={formData.subject}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all"
+                  className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/50 transition-all"
                   placeholder="How can we help you?"
                 />
               </div>
@@ -145,7 +145,7 @@ export default function ContactFormPage() {
                   rows={6}
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 bg-gray-900 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all resize-none"
+                  className="w-full px-4 py-3 bg-black border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-500/50 transition-all resize-none"
                   placeholder="Tell us more about your inquiry..."
                 />
               </div>
@@ -154,10 +154,7 @@ export default function ContactFormPage() {
               {status === 'success' && (
                 <div className="bg-green-500/10 border border-green-500/50 rounded-lg p-4">
                   <p className="text-green-400 flex items-center gap-2">
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                    </svg>
-                    Message sent successfully! We&apos;ll get back to you soon.
+                    ✅ Message sent successfully! We&apos;ll get back to you soon.
                   </p>
                 </div>
               )}
@@ -165,10 +162,7 @@ export default function ContactFormPage() {
               {status === 'error' && (
                 <div className="bg-red-500/10 border border-red-500/50 rounded-lg p-4">
                   <p className="text-red-400 flex items-center gap-2">
-                    <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
-                      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
-                    </svg>
-                    {errorMessage}
+                    ❌ {errorMessage}
                   </p>
                 </div>
               )}
@@ -177,24 +171,9 @@ export default function ContactFormPage() {
               <button
                 type="submit"
                 disabled={status === 'sending'}
-                className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none shadow-lg hover:shadow-purple-500/50"
+                className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed shadow-lg hover:shadow-red-500/50"
               >
-                {status === 'sending' ? (
-                  <span className="flex items-center justify-center gap-2">
-                    <svg className="animate-spin h-5 w-5" fill="none" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
-                    </svg>
-                    Sending...
-                  </span>
-                ) : (
-                  <span className="flex items-center justify-center gap-2">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
-                    </svg>
-                    Send Message
-                  </span>
-                )}
+                {status === 'sending' ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </div>
@@ -204,7 +183,7 @@ export default function ContactFormPage() {
             <p className="text-gray-400 mb-4">
               Or reach us directly at:
             </p>
-            <a href="mailto:contact@injaichannel.com" className="text-purple-400 hover:text-purple-300 text-lg font-semibold transition-colors">
+            <a href="mailto:contact@injaichannel.com" className="text-red-500 hover:text-red-400 text-lg font-semibold transition-colors">
               contact@injaichannel.com
             </a>
           </div>
@@ -212,7 +191,7 @@ export default function ContactFormPage() {
       </main>
 
       {/* Footer */}
-      <footer className="bg-black/50 backdrop-blur-sm border-t border-gray-800 mt-20">
+      <footer className="bg-black border-t border-gray-800 mt-20">
         <div className="container mx-auto px-4 py-8 text-center">
           <p className="text-gray-500">
             © 2024 Injai Channel. All rights reserved.
