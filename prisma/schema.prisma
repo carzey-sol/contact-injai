@@ -11,6 +11,8 @@ model NewsletterSubscription {
   id        String   @id @default(cuid())
   email     String
   name      String
+  subject   String?  // Optional field
+  message   String?  // Optional field
   status    String   @default("active")
   source    String   @default("contact-form")
   createdAt DateTime @default(now())
