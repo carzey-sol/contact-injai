@@ -184,7 +184,7 @@ export default function ContactFormPage() {
               Or reach us directly at:
             </p>
             <a href="mailto:contact@injaichannel.com" className="text-red-500 hover:text-red-400 text-lg font-semibold transition-colors">
-              contact@injaichannel.com
+              aldaje.injai@gmail.com
             </a>
           </div>
         </div>
